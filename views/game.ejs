@@ -1,0 +1,52 @@
+    <section class="single-product">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div id="product-slider" class="carousel slide carousel-fade" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="<%=game.picture%>" class="d-block">
+                            </div>
+                        </div>
+ 
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <p class="new-arrival text-center">NEW</p>
+                    <h2><%=game.title%></h2>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <span class="badge badge-success"><%=game.price%></span>
+
+                        <p id="genre"><b>Genre:</b> <%=game.genre%></p>
+                        <p id="company"><b>Publisher:</b> <%=game.publisher%></p>     
+                    </p>
+                    <div class="product-price">
+                       <h2><p id="price">$<%=game.price%>.00</p></h2>   
+                        <div class="button">
+                            <%if(user!=null){%>
+                          <a class="btn btn-info float" href="/add-to-cart/<%=game.id%>" role="button"><i class="fas fa-cart-plus"></i> ADD TO CART</a>
+                                <%}else{%>
+                                    <a class="btn btn-info float" href="/users/login" role="button"><i class="fas fa-sign-in-alt"></i> LOGIN TO PURCHASE</a>
+                                    <%}%>
+                        </div>      
+                    </div>
+
+         
+                  </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-------------product-desription-------->
+    <section class="product-description">
+        <div class="container">
+            <h4><b>Game Description</b></h4>
+            <p id="description"><%=game.description%></p>
+            <hr>
+        </div>
+    </section>

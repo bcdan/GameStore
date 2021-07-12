@@ -1,0 +1,84 @@
+<div class="px-4 px-lg-0">
+    <div class="container text-white py-5 text-center">
+      <h1 class="display-4"><i class="fas fa-cart-arrow-down"></i> Cart</h1>
+    </div>
+
+  
+    <div class="pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+            <!-- Shopping cart table -->
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="border-0 bg-light">
+                          <div class="p-2 px-3 text-uppercase">Product</div>
+                        </th>
+                        <th scope="col" class="border-0 bg-light">
+                          <div class="py-2 text-uppercase">Price</div>
+                        </th>
+                        <th scope="col" class="border-0 bg-light">
+                          <div class="py-2 text-uppercase">Quantity</div>
+                        </th>
+                        <th scope="col" class="border-0 bg-light">
+                          <div class="py-2 text-uppercase">Remove</div>
+                        </th>
+                        <th scope="col" class="border-0 bg-light">
+                            <div class="py-2 text-uppercase">Reduce one</div>
+                          </th>
+                      </tr>
+                    </thead>
+                    <% if (products){ %>
+                    <tbody>
+                        <% for(let member of products){ %>
+                      <tr class="cart_row">
+                        <th scope="row" >
+                          <div class="p-2 ">
+                            <img src="<%=member.item.picture%>" alt="" width="70" class="img-fluid rounded shadow-sm">
+                            <div class="ml-3 d-inline-block align-middle">
+                              <h5 class="mb-0"> <a href="/game/<%=member.item._id%>" class="text-dark d-inline-block"><%=member.item.title%></a></h5><span class="text-muted font-weight-normal font-italic">Genre:<%=member.item.genre%></span>
+                            </div>
+                          </div>
+                          <td class="align-middle price"><strong>$<%=member.item.price%>.00</strong></td>
+                          <td class="align-middle qty"><strong> <%=member.qty%> </strong></td>
+                          <td class="align-middle remove"><a href="/remove-from-cart/<%=member.item._id%>" class="text-dark remove" role="button" ><i class="fa fa-trash"></i></a>
+                            <td class="align-middle reduce" ><a href="/reduce-from-cart/<%=member.item._id%>" class="text-dark reduce" role="button" ><i class="fas fa-backspace"></i></a>
+                          </td>
+                      </tr>
+                     <%}%>
+                  
+                    </tbody>
+                    <%}else{ %>
+                        <tbody>
+                        <pre>
+                            <pre>
+                                <block>
+                                    <h2>Cart is empty! </h2>
+                                </block>
+                            </pre>
+                        </pre>
+                    </tbody>
+                    <%}%>
+                  </table>
+                </div>
+            <!-- End -->
+          </div>
+        </div>
+          <div class="row py-5 p-4 bg-white rounded shadow-sm">
+            <div class="col-lg-6" id="order_summary">
+                  <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
+                  <div class="p-4">
+                    <ul class="list-unstyled mb-4">
+                      <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
+                          
+                        <h5 class="font-weight-bold totalPrice">$<%= typeof totalPrice != 'undefined' ? totalPrice : 0 %>.00</h5>
+                      </li>
+                    </ul><a href="/checkout" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+                  </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>

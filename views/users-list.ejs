@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="text-center">
+        <h1><i class="fas fa-users-cog"></i> Users list</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-right">
+         <p> <a class="btn btn-info" href="/admin/" role="button"><i class="fas fa-arrow-circle-left"></i> BACK</a></p>
+      </div>
+  <%  if (users.length != 0) { %>
+    <%- include ('./partials/messages') %>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Games in inventory</th>
+        <th scope="col">Role</th>
+        <th scope="col">Change role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let i = 0 ; i< users.length;i++) {%>
+        <tr>
+        <th scope="row"><%=i%></th>
+        <td><%=users[i].firstName%></td>
+        <td><%=users[i].lastName%></td>
+        <td><%=users[i].email%></td>
+        <td><%=users[i].inventory.games.length%></td>
+        <%if(users[i].role==true){%>
+        <td>admin</td>
+        <%}else{%>
+        <td>peasant</td>
+        <%}%>
+        <td>
+        <div class="form-check form-check-inline" id="user_list_btn">
+          <form action="/admin/get-users/<%=users[i].id%>" method="POST">
+            <%if(users[i].role==true){%>
+                    <button type="submit" class="btn btn-danger btn-md"><i class="fas fa-user-shield"></i></button>
+              <%}else{%>
+                <button type="submit" class="btn btn-primary btn-md"><i class="fas fa-user"></i></button>
+                <%}%>
+          </form>
+        </div>
+        </td>
+       
+        </tr>
+      <%
+      }
+      %>  
+    </tbody>
+  </table>
+    </div>
+  <%}else{ %>
+  <h1>Users list is empty</h1>
+  <%}%>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+			<a class="btn btn-info" href="/admin/edit-product/<%=id%>"><i class="fas fa-arrow-circle-left"></i> Back</a>			
+<%  if (products.length != 0) { %>
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">CD-Key</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% for(let i = 0 ; i< products.length;i++) {%>
+          <tr>
+            <th scope="row"><%=i%></th>
+            <td><%=title%></td>
+            <td><%=products[i].cdkey%></td>
+          </tr>
+        <%
+          }
+        %>  
+    </tbody>
+  </table>
+<%}else{ %>
+  <h1>Inventory is empty</h1>
+<%}%>
+</div>
+   

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="icon" href="/icon.png" >
+    <script src="https://kit.fontawesome.com/6cc0b677b4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/6cc0b677b4.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Bebas Neue' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Black Han Sans' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <script src="/store.js"></script>
+
+    
+</head>
+<body>
+            <nav class="navbar sticky-top">
+                <!-- used to be search box -->
+            <div class="brand-title ">
+                <a href="/"><img src="/images/rsz_sitelogo.png" class="logo "></a>
+            </div>
+
+            </div>
+            <a href="#"class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            <div class="search-div mx-auto">
+                <div class="form-group">
+                    <input
+                    type="text"
+                    id="search"
+                    class="form-control form-control-lg"
+                    placeholder="Search games"
+                    maxlength="18"
+                    />
+                    <button type="submit" ><i class="fa fa-search"></i></button>
+                    </div>
+                    <div id="match-list"></div>
+                </div>
+            <div class="navbar-links">
+                <ul>
+                    <li><a href="/dashboard">Profile</a></li>
+                    <% if(user != null){  %>  
+                        <% if(!session.cart){%>
+                            <li><a href="/cart"><i class="fa fa-shopping-cart"> Cart <span class="badge badge-pill badge-info"> 0</span></i></a></li>
+                            <% }else{ %>
+                                <li><a href="/cart"><i class="fa fa-shopping-cart"> Cart <span class="badge badge-pill badge-info"><%=session.cart.totalQty%></span></i></a></li>
+                             <%}%>
+                    <% }else{ %>
+                        <li><a href="/users/register">Sign up</a></li>
+                        <li><a href="/users/login">Log in</a> </li>    
+                    <%}%>
+
+
+                </ul>
+            </div>
+
+
+    </nav>
+
+    <%- body %>
+
+     <!-- -----Footer------ -->
+     <footer class="footer">
+        <div class="container-text-center">
+            <div class="footer-distributed">
+                <div class="footer-left">
+                    <p class="footer-links">
+                        <a class="link-1" href="/">Home</a>
+                        <a href="#"> Blog</a>
+                        <a href="#"> About</a>
+                        <a href="#"> Contact</a>
+                    </p>
+                </div>
+
+                <div class="footer-right">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-github"></i></a>
+                </div>
+                <div class="copyright">
+                    <p><i class="fas fa-cat"></i> Made by Dan Levy, Leead Keness and Sheer Amit</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

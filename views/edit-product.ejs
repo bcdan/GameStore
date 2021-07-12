@@ -1,0 +1,47 @@
+
+<%- include ('./partials/messages') %>
+<div class="container" id="edit_body">
+	<div class="col-lg-9">
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>Edit Game</h2>
+				<% if(product!=null){ %>
+					<form action="/admin/edit-product/<%=product.id%>" method="POST">
+						<div class="form-group">
+							<label for="title">Title</label>
+							<input class="form-control" id="title" name="title" value="<%=product.title%>">
+						</div>
+						<div class="form-group">
+							<label for="price">Price</label>
+							<input class="form-control" type="number" id="price" name="price" value="<%=product.price%>">
+						</div>
+						<div class="form-group">
+							<label for="picture">Image URL</label>
+							<input class="form-control" id="picture" name="picture" value="<%=product.picture%>">
+						</div>
+						
+						<div class="form-group">
+							<label for="description">Description</label>
+							<textarea class="form-control" id="description" name="description" ><%=product.description%></textarea>
+						</div>
+						<div class="form-group">
+							<label for="genre">Genre</label>
+							<input class="form-control" id="genre" name="genre" value="<%=product.genre%>">
+						  </div>
+						  <div class="form-group">
+							<label for="publisher">Publisher</label>
+							<input class="form-control" id="publisher" name="publisher" value="<%=product.publisher%>">
+						  </div>
+						<button type="submit" class="btn btn-success">Apply changes</button>
+						<a class="btn btn-danger" href="/admin/fill-product/<%=product.id%>" role="button">Fill inventory</a>
+						<a class="btn btn-secondary" href="/admin/view-inventory/<%=product.id%>" role="button">View inventory</a>
+						<a class="btn btn-primary" href="/admin/games" role="button">Go back</a>
+					</form>
+					<%
+				}
+				%>
+				<br>
+			</div>
+		</div>
+	</div>
+</div>
