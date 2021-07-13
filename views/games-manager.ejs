@@ -1,99 +1,93 @@
-  
- <!-- ADD GAME Modal -->
-  <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add a game</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form action="/admin/add-product" method="POST">
-                <div class="form-group">
-                    <label for="game_id">Game ID</label>
-                    <input class="form-control" type="number" id="game_id" name="game_id" required>
-                </div>
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input class="form-control" id="title" name="title" required>
-                </div>
-                <div class="form-group">
-                    <label for="price">Price</label>
-                    <input class="form-control" type="number" id="price" name="price" placeholder="Price in Schmekels only" required> 
-                </div>
-                <div class="form-group">
-                    <label for="picture">Image URL</label>
-                    <input class="form-control" id="picture" name="picture" required>
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description"></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="genre">Genre</label>
-                  <input class="form-control" id="genre" name="genre" required>
-                </div>
-                <div class="form-group">
-                  <label for="publisher">Publisher</label>
-                  <input class="form-control" id="publisher" name="publisher" required>
-                </div>
-              
-                <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Add game</button>
+<!-- ADD GAME Modal -->
+<div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Add a game</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form action="/admin/add-product" method="POST">
+					<div class="form-group">
+						<label for="game_id">Game ID</label>
+						<input class="form-control" type="number" id="game_id" name="game_id" required />
+					</div>
+					<div class="form-group">
+						<label for="title">Title</label>
+						<input class="form-control" id="title" name="title" required />
+					</div>
+					<div class="form-group">
+						<label for="price">Price</label>
+						<input class="form-control" type="number" id="price" name="price" placeholder="Price in Schmekels only" required />
+					</div>
+					<div class="form-group">
+						<label for="picture">Image URL</label>
+						<input class="form-control" id="picture" name="picture" required />
+					</div>
+					<div class="form-group">
+						<label for="description">Description</label>
+						<textarea class="form-control" id="description" name="description"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="genre">Genre</label>
+						<input class="form-control" id="genre" name="genre" required />
+					</div>
+					<div class="form-group">
+						<label for="publisher">Publisher</label>
+						<input class="form-control" id="publisher" name="publisher" required />
+					</div>
 
-            </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
+					<button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Add game</button>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="container">
-    <div class="jumbotron">
-        <%- include ('./partials/messages') %>
-        <div class="text-center">
-            <h1><i class="fas fa-gamepad"></i> Games list</h1>
-        </div>
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <a class="btn btn-info float" href="/admin/" role="button"><i class="fas fa-arrow-circle-left"></i> BACK</a>
-                        <button class="btn btn-success float" data-toggle="modal" data-target="#add"><i class="fas fa-plus"></i> ADD</button>
-                    </div>
+	<div class="jumbotron jumbolist">
+		<%- include ('./partials/messages') %>
+		<div class="text-center">
+			<h1><i class="fas fa-gamepad"></i> Games list</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-right">
+				<a class="btn btn-dark float mb-2" href="/admin/" role="button"><i class="fas fa-arrow-circle-left"></i> BACK</a>
+				<button class="btn btn-success float mb-2" data-toggle="modal" data-target="#add"><i class="fas fa-plus"></i> ADD</button>
+			</div>
+		</div>
+		<table class="table table-dark table-hover table-bordered admin_table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Title</th>
+					<th scope="col">#CD-Keys</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% for(let i = 0 ; i< products.length;i++) {%>
+				<tr>
+					<th scope="row"><%=i%></th>
+					<td><%=products[i].title%></td>
+					<td><%=products[i].inventory.length%></td>
+					<td>
+						<form action="/admin/delete-product/<%=products[i].id%>" method="POST">
+							<div class="text-center">
+								<button type="submit" class="btn btn-danger">Delete</button>
+								<a class="btn btn-warning" href="/admin/edit-product/<%=products[i].id%>" role="button">Edit and more</a>
+							</div>
+						</form>
+					</td>
+				</tr>
 
-                </div>
-                <table class = "table table-dark table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">#CD-Keys</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% for(let i = 0 ; i< products.length;i++) {%>
-                            <tr>
-                              <th scope="row"><%=i%></th>
-                              <td><%=products[i].title%></td>
-                              <td><%=products[i].inventory.length%></td>
-                              <td>
-                                <form action="/admin/delete-product/<%=products[i].id%>" method="POST">
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                        <a class="btn btn-primary" href="/admin/edit-product/<%=products[i].id%>" role="button">Edit and more</a>
-                                    </div>
-                                    </form>
-                            </tr>
-                          <%
-                            }
-                          %>  
-                    </tbody>
-                </table>
-    </div>
+				<% } %>
+			</tbody>
+		</table>
+	</div>
 </div>
