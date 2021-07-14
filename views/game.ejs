@@ -28,9 +28,6 @@
                        <h2><p id="price">$<%=game.price%>.00</p></h2>   
                         <div class="button">
                             <%if(user!=null){%>
-                          <div class="row mt-5"></div>
-
-
                           <a class="btn btn-lg btn-success float mt-5" href="/add-to-cart/<%=game.id%>" role="button"><i class="fas fa-cart-plus"></i> ADD TO CART</a>
                                 <%}else{%>
                                     <a class="btn btn-lg btn-success float" href="/users/login" role="button"><i class="fas fa-sign-in-alt"></i> LOGIN TO PURCHASE</a>

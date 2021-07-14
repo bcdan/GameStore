@@ -41,11 +41,11 @@
 							</li>
 							<% if(!session.cart){%>
 							<li class="nav-item">
-								<a class="nav-link" href="/cart"><i class="fa fa-shopping-cart"> </i> Cart <span class="badge badge-pill badge-danger"> 0</span></a>
+								<a class="nav-link" href="/cart"><i class="fa fa-shopping-cart"> </i> <span class="badge badge-pill badge-danger"> 0</span></a>
 							</li>
 							<% }else{ %>
 							<li class="nav-item">
-								<a class="nav-link" href="/cart"><i class="fa fa-shopping-cart"> </i> Cart <span class="badge badge-pill badge-danger"><%=session.cart.totalQty%></span></a>
+								<a class="nav-link" href="/cart"><i class="fa fa-shopping-cart"> </i> <span class="badge badge-pill badge-danger"><%=session.cart.totalQty%></span></a>
 							</li>
 							<%}%> <% }else{ %>
 							<li class="nav-item"><a class="nav-link" href="/users/register">Sign up</a></li>
@@ -58,31 +58,6 @@
 		</nav>
 
 		<%- body %>
-
-		<footer class="footer">
-			<div class="container-text-center">
-				<div class="footer-distributed">
-					<div class="footer-left">
-						<p class="footer-links">
-							<a class="link-1" href="/">Home</a>
-							<a href="#"> Blog</a>
-							<a href="#"> About</a>
-							<a href="#"> Contact</a>
-						</p>
-					</div>
-
-					<div class="footer-right">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-github"></i></a>
-					</div>
-					<div class="copyright">
-						<p>Made by Dan Levy, Shmuel Fainberg</p>
-					</div>
-				</div>
-			</div>
-		</footer>
 
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script
